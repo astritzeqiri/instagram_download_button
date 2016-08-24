@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="css/popup.css">
+</head>
+<body>
+
+	<div id="list_of_photos">
+		<span v-show="loading">Loading...</span>
+		<span v-show="!loading">Total shown images: {{ count }}</span>
+		<ul v-show="!loading" class="instagram-extension-images-list">
+			<instagram-image v-for="image in images" :image="image"></instagram-image>
+		</ul>
+	</div>
+	<template id="instagram-image">
+		<li>
+			<img v-bind:src="image.link">
+			<a
+			v-show="!isDownloaded"
+			v-bind:href="image.link"
+			download
+			@click="imageDownloaded"
+			class="download-image"></a>
+		</li>
+	</template>
+</body>
+<script type="text/javascript" src="js/jquery-3.1.0.min.js"></script>
+<script type="text/javascript" src="js/vue.js"></script>
+<script type="text/javascript" src="js/popup.js"></script>
+</html>

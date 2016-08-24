@@ -6,14 +6,6 @@ $.fn.appendDownloadButton = function(text, href)
 	}
 }
 
-// var boxes = $("a._8mlbc");
-
-// boxes.on('click', function(e) {
-// 	if($(e.target).hasClass('download-insta')) {
-// 		e.stopPropagation();
-// 		e.preventDefault()
-// 	}
-// });
 
 setInterval(function() {
 	insertInModal();
@@ -61,3 +53,23 @@ function insertInModal()
 		jQuery('body').find('._a1rcs._ea084 article').appendDownloadButton(text, href);
 	}
 }
+var imagesCount = 0;
+function sendNewImages(){
+	if($('body').find("a._8mlbc").length > imagesCount) {
+		var images = [];
+		imagesCount = $('body').find("a._8mlbc").length;
+
+		$('body').find("a._8mlbc").each(function(e) {
+			if($(e.target).hasClass('download-insta')) {
+				e.stopPropagation();
+				e.preventDefault()
+			}
+			images.push({ link: $(this).find('img._icyx7').attr('src'), id: $(this).attr('href') });
+		});
+		chrome.runtime.sendMessage({type: "setImages", images: images});
+	}
+}
+sendNewImages();
+setInterval(function() {
+	sendNewImages();
+}, 2000);
