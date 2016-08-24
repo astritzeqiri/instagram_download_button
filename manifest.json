@@ -1,0 +1,13 @@
+{
+    "name": "Download Instagram Images/Videos",
+    "version": "0.0.1",
+    "manifest_version": 2,
+    "content_scripts": [
+	  	{
+		    "matches": [ "<all_urls>"],
+		    "css": [ "css/download_image.css" ],
+	    	"js": ["js/jquery-3.1.0.min.js", "js/content.js"]
+	  	}
+	],
+	"web_accessible_resources": ["images/download_image.png"]
+}

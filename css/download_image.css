@@ -1,0 +1,16 @@
+a.download-insta span {
+    background: url('chrome-extension://__MSG_@@extension_id__/images/download_image.png') no-repeat;
+    width: 20px;
+    height: 20px;
+    float: right;
+    background-size: cover;
+    margin-left: 7px;
+    margin-top: 4px;
+}
+a.download-insta {
+	top: 10px;
+	width: auto;
+	right: 345px;
+	z-index: 99999;
+	position: absolute;
+}
